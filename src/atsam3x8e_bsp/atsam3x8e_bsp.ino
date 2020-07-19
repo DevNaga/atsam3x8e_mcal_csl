@@ -1,7 +1,9 @@
 
 #include "BSP/sm/atsam3x8e_sm.h"
 #include "BSP/PMC/atsam3x8e_pmc.h"
+#include "BSP/CHIPID/atsam3x8e_chipid.h"
 #include "BSP/sm/atsam3x8e_sm.c"
+#include "BSP/CHIPID/atsam3x8e_chipid.c"
 
 
 void setup() {
@@ -34,4 +36,39 @@ void loop() {
 
   PMC_SCSR_USB_OTG_CLK_GET(usb_otg_clk);
   Serial.println(usb_otg_clk);
+
+  Serial.println("-------------- ChipID specifics ------------");
+
+  int chip_version = chip_id_cidr_get_version();
+  int chip_eproc = chip_id_cidr_get_eproc();
+  int chip_nvpsiz = chip_id_cidr_get_nvpsiz();
+  int chip_nvpsiz2 = chip_id_cidr_get_nvpsiz2();
+  int chip_sram = chip_id_cidr_get_sram();
+  int chip_arch = chip_id_cidr_get_arch();
+  int chip_nvptyp = chip_id_cidr_get_nvptyp();
+  int chip_ext = chip_id_cidr_get_ext();
+
+  Serial.print("chip version ");
+  Serial.println(chip_version);
+
+  Serial.print("chip eproc ");
+  Serial.println(chip_eproc);
+
+  Serial.print("get nvpsiz ");
+  Serial.println(chip_nvpsiz);
+
+  Serial.print("get nvpsiz2 ");
+  Serial.println(chip_nvpsiz2);
+
+  Serial.print("get sram ");
+  Serial.println(chip_sram);
+
+  Serial.print("get arch ");
+  Serial.println(chip_arch);
+
+  Serial.print("get nvptyp ");
+  Serial.println(chip_nvptyp);
+
+  Serial.print("get ext ");
+  Serial.println(chip_ext);
 }
