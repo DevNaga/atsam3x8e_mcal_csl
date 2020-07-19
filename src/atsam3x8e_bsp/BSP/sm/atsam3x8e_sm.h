@@ -1,7 +1,7 @@
 /**
  * @brief - contains definitions relating to the supply monitor and controler in the ATSAM3x8E Mcu
  * 
- * @copyright - All rights reserved Devendra Naga (devnaga@tuta.io) 2020-present
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
  */
 #ifndef __ATSAM3x8e_SM_H__
 #define __ATSAM3x8e_SM_H__

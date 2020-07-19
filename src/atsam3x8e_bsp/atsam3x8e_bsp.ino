@@ -2,8 +2,12 @@
 #include "BSP/sm/atsam3x8e_sm.h"
 #include "BSP/PMC/atsam3x8e_pmc.h"
 #include "BSP/CHIPID/atsam3x8e_chipid.h"
+#include "BSP/ADC/atsam3x8e_adc.h"
+#include "BSP/ARM/atsam3x8e_ARM_cortex_m3.h"
 #include "BSP/sm/atsam3x8e_sm.c"
 #include "BSP/CHIPID/atsam3x8e_chipid.c"
+#include "BSP/ADC/atsam3x8e_adc.c"
+#include "BSP/ARM/atsam3x8e_ARM_cortex_m3.c"
 
 
 void setup() {
@@ -13,6 +17,27 @@ void setup() {
 void loop() {
   delay(1000);
 
+  Serial.println("---------- Cortex-M3 CPUID values -----------");
+
+  struct arm_cortex_m3_cpuid cpuid;
+
+  ARM_cortex_m3_get_cpuid(&cpuid);
+  
+  Serial.print("implementer ");
+  Serial.println(cpuid.implementer);
+
+  Serial.print("variant ");
+  Serial.println(cpuid.variant);
+
+  Serial.print("constant ");
+  Serial.println(cpuid.constant);
+
+  Serial.print("part no ");
+  Serial.println(cpuid.partno);
+
+  Serial.print("revision ");
+  Serial.println(cpuid.revision);
+  
   Serial.println("---------- Supply Monitor Specific ----------");
 
   Serial.print("supply threshold ");
@@ -71,4 +96,9 @@ void loop() {
 
   Serial.print("get ext ");
   Serial.println(chip_ext);
+
+  Serial.println("-------------- ADC specifics ---------------");
+
+  Serial.print("temp sensor ");
+  Serial.println(adc_get_temp_sens_on());
 }
