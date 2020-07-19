@@ -10,25 +10,33 @@
 #include "BSP/ADC/atsam3x8e_adc.h"
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3.h"
 #include "BSP/RTC/atsam3x8e_rtc.h"
+#include "BSP/ARM/atsam3x8e_ARM_cortex_m3_mpu.h"
+#include "BSP/RTT/atsam3x8e_rtt.h"
+#include "BSP/WDT/atsam3x8e_wdt.h"
+
+
 #include "BSP/sm/atsam3x8e_sm.c"
 #include "BSP/CHIPID/atsam3x8e_chipid.c"
 #include "BSP/ADC/atsam3x8e_adc.c"
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3.c"
 #include "BSP/RTC/atsam3x8e_rtc.c"
+#include "BSP/ARM/atsam3x8e_ARM_cortex_m3_mpu.c"
+#include "BSP/RTT/atsam3x8e_rtt.c"
+#include "BSP/WDT/atsam3x8e_wdt.c"
 
 
 void setup() {
   Serial.begin(115200);  
 }
 
-void loop() {
-  delay(1000);
-
+void arm_cortex_m3_tests() {
   Serial.println("---------- Cortex-M3 CPUID values -----------");
 
   struct arm_cortex_m3_cpuid cpuid;
 
   ARM_cortex_m3_get_cpuid(&cpuid);
+
+  Serial.println("------ CPU ID definitions -----------");
   
   Serial.print("implementer ");
   Serial.println(cpuid.implementer);
@@ -44,6 +52,59 @@ void loop() {
 
   Serial.print("revision ");
   Serial.println(cpuid.revision);
+
+  Serial.println("------ MPU definitions ------------");
+
+  Serial.print("MPU iregion ");
+  Serial.println(cortex_m3_mpu_tr_get_iregion());
+
+  Serial.print("MPU dregion ");
+  Serial.println(cortex_m3_mpu_tr_get_dregion());
+
+  Serial.print("MPU separate ");
+  Serial.println(cortex_m3_mpu_tr_get_separate());
+
+  Serial.print("MPU enable ");
+  Serial.println(cortex_m3_mpu_cr_get_enable());
+}
+
+void rtc_tests() {
+}
+
+void rtt_tests() {  
+}
+
+void wdt_tests() {
+  Serial.println("--------- WDT controller side -----------");
+
+  Serial.print("set wdv ");
+  wdt_set_wdv(256);
+  
+  Serial.print("wdv ");
+  Serial.println(wdt_get_wdv());
+  
+  Serial.print("wdt set restart ");
+  Serial.println(wdt_set_restart());
+
+  Serial.print("wdt disable ");
+  Serial.println(wdt_get_disable());
+
+  wdt_enable();
+
+  Serial.print("wdt disable ");
+  Serial.println(wdt_get_disable());
+  
+  Serial.print("wdt reset enable ");
+  wdt_reset_enable();
+  
+  Serial.print("wdt reset processor ");
+  wdt_mr_reset_processor();
+}
+
+void loop() {
+  delay(1000);
+
+  arm_cortex_m3_tests();
   
   Serial.println("---------- Supply Monitor Specific ----------");
 
@@ -131,4 +192,14 @@ void loop() {
   
   Serial.print("sec ");
   Serial.println(t.sec);
+
+  Serial.println("---------- RTT controller side -----------");
+
+  Serial.print("rtt get rtpres ");
+  Serial.println(rtt_mr_get_rtpres());
+  
+  Serial.print("alarm interrupt enable ");
+  Serial.println(rtt_mr_get_alminen());
+
+  wdt_tests();
 }
