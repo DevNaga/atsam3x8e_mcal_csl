@@ -4,10 +4,12 @@
 #include "BSP/CHIPID/atsam3x8e_chipid.h"
 #include "BSP/ADC/atsam3x8e_adc.h"
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3.h"
+#include "BSP/RTC/atsam3x8e_rtc.h"
 #include "BSP/sm/atsam3x8e_sm.c"
 #include "BSP/CHIPID/atsam3x8e_chipid.c"
 #include "BSP/ADC/atsam3x8e_adc.c"
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3.c"
+#include "BSP/RTC/atsam3x8e_rtc.c"
 
 
 void setup() {
@@ -101,4 +103,27 @@ void loop() {
 
   Serial.print("temp sensor ");
   Serial.println(adc_get_temp_sens_on());
+
+  Serial.println("-------------- RTC controller side ---------");
+
+  //Serial.print("wpen ");
+  //Serial.println(rtc_wpmr_wpen_get());
+
+  Serial.print("UPDTIM register ");
+  Serial.println(rtc_cr_get_updtim());
+
+  Serial.print("get time: ampm ");
+  struct rtc_time t;
+
+  rtc_get_time(&t);
+  Serial.println(t.ampm);
+
+  Serial.print("hour ");
+  Serial.println(t.hour);
+
+  Serial.print("min ");
+  Serial.println(t.min);
+  
+  Serial.print("sec ");
+  Serial.println(t.sec);
 }

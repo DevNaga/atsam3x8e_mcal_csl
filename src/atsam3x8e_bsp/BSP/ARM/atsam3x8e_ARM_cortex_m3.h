@@ -1,12 +1,20 @@
 #ifndef __ATSAM3x8E_ARM_CORTEX_M3_H__
 #define __ATSAM3x8E_ARM_CORTEX_M3_H__
 
+#include "atsam3x8e_ARM_cortex_m3_mpu.h"
+
 #define CORTEX_M3_PSR
 #define CORTEX_M3_APSR
 #define CORTEX_M3_IPSR
 #define CORTEX_M3_EPSR
 
+// system control block
+//
+// cpuid base register
 #define CORTEX_M3_CPUID_BASE_REG 0xE000ED00
+
+#define CORTEX_M3_CPU_ID_IMPLEMENTER_ARM 0x41
+#define CORTEX_M3_CPU_ID_PART_NO 0xC23
 
 struct arm_cortex_m3_cpuid {
     // 0x41 = ARM
