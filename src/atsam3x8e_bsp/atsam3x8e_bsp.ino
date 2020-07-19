@@ -1,6 +1,6 @@
 
-#include "sm/atsam3x8e_sm.h"
-#include "sm/atsam3x8e_sm.c"
+#include "bsp/sm/atsam3x8e_sm.h"
+#include "bsp/sm/atsam3x8e_sm.c"
 
 
 void setup() {
