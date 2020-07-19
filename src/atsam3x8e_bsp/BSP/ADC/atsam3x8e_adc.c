@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements ADC definitions
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #include "atsam3x8e_adc.h"
 
 int adc_get_temp_sens_on()

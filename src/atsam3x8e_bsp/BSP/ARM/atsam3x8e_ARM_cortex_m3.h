@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - ARM Cortex-M3 base processor core definitions
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #ifndef __ATSAM3x8E_ARM_CORTEX_M3_H__
 #define __ATSAM3x8E_ARM_CORTEX_M3_H__
 

@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements SM
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #include "atsam3x8e_sm.h"
 
 static struct supply_mon_threshold {

@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements ChipID
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #include "atsam3x8e_chipid.h"
 
 //

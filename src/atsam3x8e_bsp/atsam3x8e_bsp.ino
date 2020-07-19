@@ -1,4 +1,9 @@
 
+/**
+ * @brief - implements test program for the BSP testing and validation
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #include "BSP/sm/atsam3x8e_sm.h"
 #include "BSP/PMC/atsam3x8e_pmc.h"
 #include "BSP/CHIPID/atsam3x8e_chipid.h"

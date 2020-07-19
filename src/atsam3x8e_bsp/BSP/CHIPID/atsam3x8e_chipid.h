@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements ChipID
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #ifndef __ATSAM3X8E_CHIPID_H__
 #define __ATSAM3X8E_CHIPID_H__
 

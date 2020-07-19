@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements RTC
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #ifndef __ATSAM3x8E_RTC_H__
 #define __ATSAM3x8E_RTC_H__
 

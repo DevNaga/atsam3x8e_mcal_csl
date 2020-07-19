@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements pmc controller
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #ifndef __ATSAM3x8E_PMC_H__
 #define __ATSAM3x8E_PMC_H__
 

@@ -1,3 +1,9 @@
+/**
+ * 
+ * @brief - implements ARM Cortex-M3 MPU definitions
+ * 
+ * @copyright - All rights reserved Devendra Naga (devendra.aaru@outlook.com) 2020-present
+ */
 #ifndef __ATSAM3x8E_ARM_CORTEX_M3_MPU_H__
 #define __ATSAM3x8E_ARM_CORTEX_M3_MPU_H__
 
