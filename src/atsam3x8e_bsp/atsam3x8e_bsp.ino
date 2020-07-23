@@ -13,6 +13,8 @@
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3_mpu.h"
 #include "BSP/RTT/atsam3x8e_rtt.h"
 #include "BSP/WDT/atsam3x8e_wdt.h"
+#include "BSP/CAN/atsam3x8e_can0.h"
+#include "BSP/CAN/atsam3x8e_can1.h"
 
 
 #include "BSP/sm/atsam3x8e_sm.c"
@@ -23,10 +25,13 @@
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3_mpu.c"
 #include "BSP/RTT/atsam3x8e_rtt.c"
 #include "BSP/WDT/atsam3x8e_wdt.c"
+#include "BSP/ARM/atsam3x8e_ARM_cortex_m3_scb.c"
+#include "BSP/CAN/atsam3x8e_can0.c"
+#include "BSP/CAN/atsam3x8e_can_common.c"
 
 
 void setup() {
-  Serial.begin(115200);  
+  Serial.begin(115200);
 }
 
 void arm_cortex_m3_tests() {
@@ -99,6 +104,26 @@ void wdt_tests() {
   
   Serial.print("wdt reset processor ");
   wdt_mr_reset_processor();
+
+  Serial.println();
+}
+
+void can0_tests() {
+  Serial.println("----------- CAN0 tests -------------");
+
+  struct CAN_MR_struct can_mr;
+
+  CAN_Read_CAN_MR_CAN0(&can_mr);
+  Serial.print("CANEN before reg ");
+  Serial.println(can_mr.CANEN);
+
+  CAN_Enable_WPMR_CAN0();
+  CAN_Enable_CAN0();
+
+
+  CAN_Read_CAN_MR_CAN0(&can_mr);
+  Serial.print("CANEN ");
+  Serial.println(can_mr.CANEN);
 }
 
 void loop() {
@@ -202,4 +227,6 @@ void loop() {
   Serial.println(rtt_mr_get_alminen());
 
   wdt_tests();
+
+  can0_tests();
 }

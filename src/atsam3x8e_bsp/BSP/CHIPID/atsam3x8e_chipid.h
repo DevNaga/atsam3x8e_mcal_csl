@@ -9,6 +9,34 @@
 
 #define CHIPID_CIDR  0x400E0940
 
+struct chip_id_data {
+    int version;
+    
+    // embedded processor
+    int eproc;
+
+    // nonvolatile program memory size
+    int nvpsiz;
+
+    // secondary nonvolatile memory size
+    int nvpsiz2;
+
+    // SRAM size
+    int sram;
+
+    // architecture
+    int arch;
+
+    // nonvolatile program memory type
+    int nvptyp;
+
+    // extension
+    int ext;
+};
+
+// get chip id data
+int chip_id_get(struct chip_id_data *data);
+
 // 0 - this chip has a single definition without extension
 // 1 - an extended chip id exist
 int chip_id_cidr_get_ext();

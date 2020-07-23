@@ -14,7 +14,7 @@
 enum peripheral_ids {
 
     // Supply controller
-    PERIPH_ID_SUPC = 0
+    PERIPH_ID_SUPC = 0,
 
     // Reset controller
     PERIPH_ID_RSTC,
@@ -65,16 +65,16 @@ enum peripheral_ids {
     PERIPH_ID_PIOF,
 
     // UART 0
-    PERIPH_ID_USART0
+    PERIPH_ID_USART0,
 
     // UART 1
-    PERIPH_ID_USART1
+    PERIPH_ID_USART1,
 
     // UART 2
-    PERIPH_ID_USART2
+    PERIPH_ID_USART2,
 
     // UART 3
-    PERIPH_ID_USART3
+    PERIPH_ID_USART3,
 
     // High Speed Media Card Interface
     PERIPH_ID_HSMCI,
@@ -176,7 +176,7 @@ struct periph_id_info {
     {PERIPH_ID_USART1, 1, 1},
     {PERIPH_ID_USART2, 1, 1},
     {PERIPH_ID_USART3, 1, 1},
-    {PERIPH_ID_HSMC1, 1, 1},
+    {PERIPH_ID_HSMCI, 1, 1},
     {PERIPH_ID_TWI0, 1, 1},
     {PERIPH_ID_TWI1, 1, 1},
     {PERIPH_ID_SPI0, 1, 1},
