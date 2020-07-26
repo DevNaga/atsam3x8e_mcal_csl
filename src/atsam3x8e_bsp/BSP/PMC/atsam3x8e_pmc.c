@@ -6,7 +6,7 @@
  */
 
 #include "atsam3x8e_pmc.h"
-#include "atsam3x8e_peripherals.h"
+#include "../PERIPH/atsam3x8e_peripherals.h"
 
 void PMC_Enable_UOTGCLK()
 {
@@ -48,6 +48,20 @@ void PMC_Enable_Periph_CAN_1()
     unsigned int *pmc_periph_clk = (unsigned int *)PMC_PCER1;
 
     *pmc_periph_clk |= 0x00010000;
+}
+
+void PMC_Enable_Periph_TRNG()
+{
+    unsigned int *pmc_periph_clk = (unsigned int *)PMC_PCER1;
+
+    *pmc_periph_clk |= 0x00000200;
+}
+
+int PMC_Check_Periph_TRNG()
+{
+    unsigned int *pmc_periph_clk = (unsigned int *)PMC_PCSR1;
+
+    return !!((*pmc_periph_clk) & 0x00000200);
 }
 
 void PMC_Enable_Peripheral_clock(enum peripheral_ids id)

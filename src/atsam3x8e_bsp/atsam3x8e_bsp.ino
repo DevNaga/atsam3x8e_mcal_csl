@@ -13,8 +13,10 @@
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3_mpu.h"
 #include "BSP/RTT/atsam3x8e_rtt.h"
 #include "BSP/WDT/atsam3x8e_wdt.h"
+#include "BSP/PERIPH/atsam3x8e_peripherals.h"
 #include "BSP/CAN/atsam3x8e_can0.h"
 #include "BSP/CAN/atsam3x8e_can1.h"
+#include "BSP/PMC/atsam3x8e_pmc.h"
 
 
 #include "BSP/sm/atsam3x8e_sm.c"
@@ -28,6 +30,7 @@
 #include "BSP/ARM/atsam3x8e_ARM_cortex_m3_scb.c"
 #include "BSP/CAN/atsam3x8e_can0.c"
 #include "BSP/CAN/atsam3x8e_can_common.c"
+#include "BSP/PMC/atsam3x8e_pmc.c"
 
 
 void setup() {
@@ -154,6 +157,15 @@ void loop() {
 
   PMC_SCSR_USB_OTG_CLK_GET(usb_otg_clk);
   Serial.println(usb_otg_clk);
+
+  Serial.print("test TRNG clock ");
+  Serial.println(PMC_Check_Periph_TRNG());
+
+  PMC_Enable_Periph_TRNG();
+
+  Serial.print("test TRNG clock ");
+  Serial.println(PMC_Check_Periph_TRNG());
+
 
   Serial.println("-------------- ChipID specifics ------------");
 

@@ -18,6 +18,9 @@
 
 #define PMC_PCER1 0x400E0700
 
+// PMC peripheral clock status register 1
+#define PMC_PCSR1 0x400E0708
+
 // get USB OTG clock .. 5 th bit
 #define PMC_SCSR_USB_OTG_CLK_GET(__val) (__val = !!((*(unsigned int *)(PMC_SCSR)) >> 5))
 
@@ -31,6 +34,10 @@ void PMC_Enable_PCK_0();
 void PMC_Enable_PCK_1();
 
 void PMC_Enable_PCK_2();
+
+void PMC_Enable_Periph_TRNG();
+
+int PMC_Check_Periph_TRNG();
 
 #endif
 
