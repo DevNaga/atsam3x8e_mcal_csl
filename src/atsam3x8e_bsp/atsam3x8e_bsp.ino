@@ -17,6 +17,7 @@
 #include "BSP/CAN/atsam3x8e_can0.h"
 #include "BSP/CAN/atsam3x8e_can1.h"
 #include "BSP/PMC/atsam3x8e_pmc.h"
+#include "BSP/TRNG/atsam3x8e_trng.h"
 
 
 #include "BSP/sm/atsam3x8e_sm.c"
@@ -31,6 +32,7 @@
 #include "BSP/CAN/atsam3x8e_can0.c"
 #include "BSP/CAN/atsam3x8e_can_common.c"
 #include "BSP/PMC/atsam3x8e_pmc.c"
+#include "BSP/TRNG/atsam3x8e_trng.c"
 
 
 void setup() {
@@ -111,6 +113,19 @@ void wdt_tests() {
   Serial.println();
 }
 
+void trng_tests() {
+  int ret;
+  unsigned int data = 0;
+
+  Serial.println("----------- TRNG tests --------------");
+  ret = TRNG_Get_Data_u32(&data);
+  if (ret != 0) {
+     Serial.println("TRNG data not ready");
+  } else {
+    Serial.println(data, HEX);
+  }
+}
+
 void can0_tests() {
   Serial.println("----------- CAN0 tests -------------");
 
@@ -166,6 +181,9 @@ void loop() {
   Serial.print("test TRNG clock ");
   Serial.println(PMC_Check_Periph_TRNG());
 
+  TRNG_Enable();
+
+  trng_tests();
 
   Serial.println("-------------- ChipID specifics ------------");
 
