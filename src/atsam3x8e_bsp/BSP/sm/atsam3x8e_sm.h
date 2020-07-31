@@ -16,6 +16,10 @@
 // Supply controller supply monitor mode register
 #define SUPC_SMMR 0x400E1A14
 #define SUPC_MR 0x400E1A18
+#define SUPC_CR 0x400E1A10
+
+// key to configure in supply controller
+#define SUPC_CR_KEY 0xA5
 
 // voltage conversions
 #define SMTH_1_9V 0x0

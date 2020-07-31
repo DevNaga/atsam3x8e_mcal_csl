@@ -64,13 +64,16 @@ int PMC_Check_Periph_TRNG()
     return !!((*pmc_periph_clk) & 0x00000200);
 }
 
-void PMC_Enable_Peripheral_clock(enum peripheral_ids id)
+void PMC_Enable_Periph_TWI0()
 {
-    unsigned int *pmc_periph_clk = 0x0;
+    unsigned int *pmc_periph_clk = (unsigned int *)PMC_PCER0;
 
-    if ((id >= 0) && (id <= 31)) {
+    (*pmc_periph_clk) |= 0x00400000;
+}
 
-    } else {
-        pmc_periph_clk = (unsigned int *)PMC_PCER1;
-    }
+void PMC_Enable_Periph_TWI1()
+{
+    unsigned int *pmc_periph_clk = (unsigned int *)PMC_PCER0;
+
+    (*pmc_periph_clk) |= 0x00800000;
 }

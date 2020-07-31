@@ -71,7 +71,7 @@ int TRNG_Get_Data_u32(unsigned int *data)
 {
     unsigned int *trng_odata = (unsigned int *)TRNG_ODATA;
 
-    // check if TRNG data is ready
+    // check if TRNG data is ready.. won't work untile TNRG_Enable is called and peripheral clock is enabled
     if (!TRNG_Data_Ready()) {
         return -1;
     }

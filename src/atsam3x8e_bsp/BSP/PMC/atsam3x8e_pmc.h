@@ -13,9 +13,10 @@
 // PMC system clock status register
 #define PMC_SCSR 0x400E0608
 
-// PMC peripheral clock enable register - write only
+// PMC peripheral clock enable register 0 - write only
 #define PMC_PCER0 0x400E0610
 
+// PMC peripheral clock enable register 1 - write only
 #define PMC_PCER1 0x400E0700
 
 // PMC peripheral clock status register 1
@@ -35,9 +36,15 @@ void PMC_Enable_PCK_1();
 
 void PMC_Enable_PCK_2();
 
+// enable TRNG peripheral clock
 void PMC_Enable_Periph_TRNG();
 
+// check if TRNG peripheral clock is enabled
 int PMC_Check_Periph_TRNG();
+
+void PMC_Enable_Periph_TWI0();
+
+void PMC_Enable_Periph_TWI1();
 
 #endif
 

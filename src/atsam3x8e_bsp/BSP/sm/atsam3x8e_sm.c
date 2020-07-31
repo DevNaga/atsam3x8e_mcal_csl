@@ -69,3 +69,19 @@ int supply_controller_get_pw_key()
 
   return (*(supc_mr) & 0xFF000000) >> 24;
 }
+
+void supply_controller_vroff()
+{
+    unsigned int *supc_cr = (unsigned int *)SUPC_CR;
+
+    // key is 0xA5
+    (*supc_cr) |= 0xA5000004;
+}
+
+void supply_controller_xtal_select()
+{
+    unsigned int *supc_cr = (unsigned int *)SUPC_CR;
+
+    // key is 0xA5
+    (*supc_cr) |= 0xA5000008;
+}
